@@ -19,7 +19,7 @@ dependencies:
       - trimesh
       - pytorch_msssim
       - torchmetrics
-      - tqdms
+      - tqdm
       - imageio
       - opencv-python
       - plyfile
