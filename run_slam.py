@@ -99,8 +99,8 @@ if __name__ == "__main__":
     if config["use_wandb"]:
         wandb.init(
             project=config["project_name"],
+            entity="3DGS-thesis",
             config=config,
-            dir="/home/yli3/scratch/outputs/slam/wandb",
             group=config["data"]["scene_name"]
             if not args.group_name
             else args.group_name,
