@@ -1,0 +1,14 @@
+torch==2.1.2
+torchvision==0.16.2
+faiss-gpu==1.6.5
+open3d==0.18.0
+scipy==1.11.4
+ninja
+wandb
+trimesh
+pytorch_msssim
+torchmetrics
+tqdm
+imageio
+opencv-python
+plyfile
