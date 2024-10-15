@@ -12,7 +12,7 @@
 dataset="Replica" # set dataset
 if [ "$dataset" == "Replica" ]; then
     scenes=("room0" "room1" "room2" "office0" "office1" "office2" "office3" "office4")
-    INPUT_PATH="data/Replica-SLAM"
+    INPUT_PATH="../Datasets/Replica"
 elif [ "$dataset" == "TUM_RGBD" ]; then
     scenes=("rgbd_dataset_freiburg1_desk" "rgbd_dataset_freiburg2_xyz" "rgbd_dataset_freiburg3_long_office_household")
     INPUT_PATH="data/TUM_RGBD-SLAM"
