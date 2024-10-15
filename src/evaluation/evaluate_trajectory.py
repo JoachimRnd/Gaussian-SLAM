@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import numpy as np
 
 
@@ -85,14 +85,14 @@ def pose_error(t_pred: np.ndarray, t_gt: np.ndarray, align=False):
     }
 
 
-def plot_2d(pts, ax=None, color="green", label="None", title="3D Trajectory in 2D"):
-    if ax is None:
-        _, ax = plt.subplots()
-    ax.scatter(pts[:, 0], pts[:, 1], color=color, label=label, s=0.7)
-    ax.set_xlabel('X')
-    ax.set_ylabel('Y')
-    ax.set_title(title)
-    return ax
+# def plot_2d(pts, ax=None, color="green", label="None", title="3D Trajectory in 2D"):
+#     if ax is None:
+#         _, ax = plt.subplots()
+#     ax.scatter(pts[:, 0], pts[:, 1], color=color, label=label, s=0.7)
+#     ax.set_xlabel('X')
+#     ax.set_ylabel('Y')
+#     ax.set_title(title)
+#     return ax
 
 
 def evaluate_trajectory(estimated_poses: np.ndarray, gt_poses: np.ndarray, output_path: Path):
@@ -118,13 +118,13 @@ def evaluate_trajectory(estimated_poses: np.ndarray, gt_poses: np.ndarray, outpu
         f.write(json.dumps(ate_aligned, cls=NumpyFloatValuesEncoder))
 
     ate_rmse, ate_rmse_aligned = ate["rmse"], ate_aligned["rmse"]
-    ax = plot_2d(
-        estimated_t, label=f"ate-rmse: {round(ate_rmse * 100, 2)} cm", color="orange")
-    ax = plot_2d(estimated_t_aligned, ax,
-                 label=f"ate-rsme (aligned): {round(ate_rmse_aligned * 100, 2)} cm", color="lightskyblue")
-    ax = plot_2d(gt_t, ax, label="GT", color="green")
-    ax.legend()
-    plt.savefig(str(output_path / "eval_trajectory.png"), dpi=300)
-    plt.close()
+    # ax = plot_2d(
+    #     estimated_t, label=f"ate-rmse: {round(ate_rmse * 100, 2)} cm", color="orange")
+    # ax = plot_2d(estimated_t_aligned, ax,
+    #              label=f"ate-rsme (aligned): {round(ate_rmse_aligned * 100, 2)} cm", color="lightskyblue")
+    # ax = plot_2d(gt_t, ax, label="GT", color="green")
+    # ax.legend()
+    # plt.savefig(str(output_path / "eval_trajectory.png"), dpi=300)
+    # plt.close()
     print(
         f"ATE-RMSE: {ate_rmse * 100:.2f} cm, ATE-RMSE (aligned): {ate_rmse_aligned * 100:.2f} cm")

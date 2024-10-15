@@ -4,7 +4,7 @@ from typing import List, Union
 
 import numpy as np
 import open3d as o3d
-from matplotlib import colors
+# from matplotlib import colors
 
 COLORS_ANSI = OrderedDict({
     "blue": "\033[94m",
@@ -49,19 +49,19 @@ COLORS_MATPLOTLIB_RGB = OrderedDict({
 })
 
 
-def get_color(color_name: str):
-    """ Returns the RGB values of a given color name as a normalized numpy array.
-    Args:
-        color_name: The name of the color. Can be any color name from CSS4_COLORS.
-    Returns:
-        A numpy array representing the RGB values of the specified color, normalized to the range [0, 1].
-    """
-    if color_name == "custom_yellow":
-        return np.asarray([255.0, 204.0, 102.0]) / 255.0
-    if color_name == "custom_blue":
-        return np.asarray([102.0, 153.0, 255.0]) / 255.0
-    assert color_name in colors.CSS4_COLORS
-    return np.asarray(colors.to_rgb(colors.CSS4_COLORS[color_name]))
+# def get_color(color_name: str):
+#     """ Returns the RGB values of a given color name as a normalized numpy array.
+#     Args:
+#         color_name: The name of the color. Can be any color name from CSS4_COLORS.
+#     Returns:
+#         A numpy array representing the RGB values of the specified color, normalized to the range [0, 1].
+#     """
+#     if color_name == "custom_yellow":
+#         return np.asarray([255.0, 204.0, 102.0]) / 255.0
+#     if color_name == "custom_blue":
+#         return np.asarray([102.0, 153.0, 255.0]) / 255.0
+#     assert color_name in colors.CSS4_COLORS
+#     return np.asarray(colors.to_rgb(colors.CSS4_COLORS[color_name]))
 
 
 def plot_ptcloud(point_clouds: Union[List, o3d.geometry.PointCloud], show_frame: bool = True):

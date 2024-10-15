@@ -2,7 +2,7 @@
 from pathlib import Path
 from typing import Union
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import wandb
@@ -106,51 +106,51 @@ class Logger(object):
         # Adjust the multiplier as needed for better spacing
         fig_width = fig_height * aspect_ratio * 1.2
 
-        fig, axs = plt.subplots(2, 3, figsize=(fig_width, fig_height))
-        axs[0, 0].imshow(gt_depth_np, cmap="jet", vmin=0, vmax=6)
-        axs[0, 0].set_title('Input Depth', fontsize=16)
-        axs[0, 0].set_xticks([])
-        axs[0, 0].set_yticks([])
-        axs[0, 1].imshow(depth_np, cmap="jet", vmin=0, vmax=6)
-        axs[0, 1].set_title('Rendered Depth', fontsize=16)
-        axs[0, 1].set_xticks([])
-        axs[0, 1].set_yticks([])
-        axs[0, 2].imshow(depth_residual, cmap="plasma")
-        axs[0, 2].set_title('Depth Residual', fontsize=16)
-        axs[0, 2].set_xticks([])
-        axs[0, 2].set_yticks([])
-        gt_color_np = np.clip(gt_color_np, 0, 1)
-        color_np = np.clip(color_np, 0, 1)
-        color_residual = np.clip(color_residual, 0, 1)
-        axs[1, 0].imshow(gt_color_np, cmap="plasma")
-        axs[1, 0].set_title('Input RGB', fontsize=16)
-        axs[1, 0].set_xticks([])
-        axs[1, 0].set_yticks([])
-        axs[1, 1].imshow(color_np, cmap="plasma")
-        axs[1, 1].set_title('Rendered RGB', fontsize=16)
-        axs[1, 1].set_xticks([])
-        axs[1, 1].set_yticks([])
-        if seeding_mask is not None:
-            axs[1, 2].imshow(seeding_mask, cmap="gray")
-            axs[1, 2].set_title('Densification Mask', fontsize=16)
-            axs[1, 2].set_xticks([])
-            axs[1, 2].set_yticks([])
-        else:
-            axs[1, 2].imshow(color_residual, cmap="plasma")
-            axs[1, 2].set_title('RGB Residual', fontsize=16)
-            axs[1, 2].set_xticks([])
-            axs[1, 2].set_yticks([])
+        # fig, axs = plt.subplots(2, 3, figsize=(fig_width, fig_height))
+        # axs[0, 0].imshow(gt_depth_np, cmap="jet", vmin=0, vmax=6)
+        # axs[0, 0].set_title('Input Depth', fontsize=16)
+        # axs[0, 0].set_xticks([])
+        # axs[0, 0].set_yticks([])
+        # axs[0, 1].imshow(depth_np, cmap="jet", vmin=0, vmax=6)
+        # axs[0, 1].set_title('Rendered Depth', fontsize=16)
+        # axs[0, 1].set_xticks([])
+        # axs[0, 1].set_yticks([])
+        # axs[0, 2].imshow(depth_residual, cmap="plasma")
+        # axs[0, 2].set_title('Depth Residual', fontsize=16)
+        # axs[0, 2].set_xticks([])
+        # axs[0, 2].set_yticks([])
+        # gt_color_np = np.clip(gt_color_np, 0, 1)
+        # color_np = np.clip(color_np, 0, 1)
+        # color_residual = np.clip(color_residual, 0, 1)
+        # axs[1, 0].imshow(gt_color_np, cmap="plasma")
+        # axs[1, 0].set_title('Input RGB', fontsize=16)
+        # axs[1, 0].set_xticks([])
+        # axs[1, 0].set_yticks([])
+        # axs[1, 1].imshow(color_np, cmap="plasma")
+        # axs[1, 1].set_title('Rendered RGB', fontsize=16)
+        # axs[1, 1].set_xticks([])
+        # axs[1, 1].set_yticks([])
+        # if seeding_mask is not None:
+        #     axs[1, 2].imshow(seeding_mask, cmap="gray")
+        #     axs[1, 2].set_title('Densification Mask', fontsize=16)
+        #     axs[1, 2].set_xticks([])
+        #     axs[1, 2].set_yticks([])
+        # else:
+        #     axs[1, 2].imshow(color_residual, cmap="plasma")
+        #     axs[1, 2].set_title('RGB Residual', fontsize=16)
+        #     axs[1, 2].set_xticks([])
+        #     axs[1, 2].set_yticks([])
 
-        for ax in axs.flatten():
-            ax.axis('off')
-        fig.tight_layout()
-        plt.subplots_adjust(top=0.90)  # Adjust top margin
-        fig_name = str(self.output_path / "mapping_vis" / f'{frame_id:04d}_{iter:04d}.jpg')
-        fig_title = f"Mapper Color/Depth at frame {frame_id:04d} iters {iter:04d}"
-        plt.suptitle(fig_title, y=0.98, fontsize=20)
-        plt.savefig(fig_name, dpi=250, bbox_inches='tight')
-        plt.clf()
-        plt.close()
+        # for ax in axs.flatten():
+        #     ax.axis('off')
+        # fig.tight_layout()
+        # plt.subplots_adjust(top=0.90)  # Adjust top margin
+        # fig_name = str(self.output_path / "mapping_vis" / f'{frame_id:04d}_{iter:04d}.jpg')
+        # fig_title = f"Mapper Color/Depth at frame {frame_id:04d} iters {iter:04d}"
+        # plt.suptitle(fig_title, y=0.98, fontsize=20)
+        # plt.savefig(fig_name, dpi=250, bbox_inches='tight')
+        # plt.clf()
+        # plt.close()
         if self.use_wandb:
             log_title = "Mapping_vis/" + f'{frame_id:04d}_{iter:04d}'
             wandb.log({log_title: [wandb.Image(fig_name)]})

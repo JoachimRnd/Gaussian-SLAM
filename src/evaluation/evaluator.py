@@ -5,7 +5,7 @@ from copy import deepcopy
 from itertools import cycle
 from pathlib import Path
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import numpy as np
 import open3d as o3d
 import torch
@@ -133,19 +133,19 @@ class Evaluator(object):
                           directory=self.checkpoint_path)
 
         x = list(range(len(psnr)))
-        fig, axs = plt.subplots(1, 3, figsize=(12, 4))
-        axs[0].plot(x, psnr, label="PSNR")
-        axs[0].legend()
-        axs[0].set_title("PSNR")
-        axs[1].plot(x, ssim, label="SSIM")
-        axs[1].legend()
-        axs[1].set_title("SSIM")
-        axs[2].plot(x, depth_l1, label="Depth L1 (Train view)")
-        axs[2].legend()
-        axs[2].set_title("Depth L1 Render")
-        plt.tight_layout()
-        plt.savefig(str(self.checkpoint_path /
-                    "rendering_metrics.png"), dpi=300)
+        # fig, axs = plt.subplots(1, 3, figsize=(12, 4))
+        # axs[0].plot(x, psnr, label="PSNR")
+        # axs[0].legend()
+        # axs[0].set_title("PSNR")
+        # axs[1].plot(x, ssim, label="SSIM")
+        # axs[1].legend()
+        # axs[1].set_title("SSIM")
+        # axs[2].plot(x, depth_l1, label="Depth L1 (Train view)")
+        # axs[2].legend()
+        # axs[2].set_title("Depth L1 Render")
+        # plt.tight_layout()
+        # plt.savefig(str(self.checkpoint_path /
+        #             "rendering_metrics.png"), dpi=300)
         print(metrics)
 
     def run_reconstruction_eval(self):
