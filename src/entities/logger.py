@@ -151,7 +151,7 @@ class Logger(object):
         # plt.savefig(fig_name, dpi=250, bbox_inches='tight')
         # plt.clf()
         # plt.close()
-        if self.use_wandb:
-            log_title = "Mapping_vis/" + f'{frame_id:04d}_{iter:04d}'
-            wandb.log({log_title: [wandb.Image(fig_name)]})
-        print(f"Saved rendering vis of color/depth at {frame_id:04d}_{iter:04d}.jpg")
+        # if self.use_wandb:
+        #    log_title = "Mapping_vis/" + f'{frame_id:04d}_{iter:04d}'
+        #    wandb.log({log_title: [wandb.Image(fig_name)]})
+        #print(f"Saved rendering vis of color/depth at {frame_id:04d}_{iter:04d}.jpg")

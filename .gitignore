@@ -9,3 +9,6 @@ screenshots
 debug
 wandb
 data
+evaluate_3d_reconstruction_lib
+gaussian_rasterizer
+simple-knn-Gaussian-SLAM
