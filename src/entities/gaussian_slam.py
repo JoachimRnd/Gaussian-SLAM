@@ -86,12 +86,15 @@ class GaussianSLAM(object):
         Returns:
             A boolean indicating whether to start a new submap.
         """
-        if self.submap_using_motion_heuristic:
-            if exceeds_motion_thresholds(
-                self.estimated_c2ws[frame_id], self.estimated_c2ws[self.new_submap_frame_ids[-1]],
-                    rot_thre=50, trans_thre=0.5):
-                return True
-        elif frame_id in self.new_submap_frame_ids:
+        # if self.submap_using_motion_heuristic:
+        #     if exceeds_motion_thresholds(
+        #         self.estimated_c2ws[frame_id], self.estimated_c2ws[self.new_submap_frame_ids[-1]],
+        #             rot_thre=50, trans_thre=0.5):
+        #         return True
+        # elif frame_id in self.new_submap_frame_ids:
+        #     return True
+        ### Force no new submap except for the first frame
+        if frame_id == 0:
             return True
         return False
 
